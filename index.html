@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nebres Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: fantasy;
+        color: #555;
+        background-color: #f5f5f5;
+    }
+
+    nav {
+        font-family: inter;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.3rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: poppins;
+    }
+
+    .nav-links { list-style: none; display: flex; }
+    .nav-links li { margin-left: 6rem; }
+    .nav-links a {
+        text-decoration: none; color: white; padding: 0.5rem;
+        transition: background 0.3s;
+    }
+    .nav-links a:hover { background-color: #575757; border-radius: 4px; }
+
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+    .menu-toggle div { width: 25px; height: 3px; background-color: white; margin: 4px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; width: 100%; background-color: #333; }
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: flex; }
+    }
+
+    header { text-align: center; padding: 30px 30px; }
+
+    .slider {
+        width: 80%;
+        max-width: 800px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .slides, .slides2 {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+    }
+
+    .slides img { width: 100%; flex-shrink: 0; }
+
+    .project-slide { min-width: 100%; text-align: center; }
+
+    .project-slide img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .caption { margin-top: 10px; font-size: 1rem; color: #333; }
+    .nameslide { padding: 10px; }
+    .description { text-align: justify; padding: 1.5rem; color: #555; }
+    .title { color: #555; }
+
+    button {
+        background-color: #333; color: white; border: none;
+        padding: 8px 16px; margin: 5px; cursor: pointer; border-radius: 4px;
+    }
+    button:hover { background-color: #575757; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Nebres.</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="menu-toggle" id="menuToggle">
+    <div></div><div></div><div></div>
+  </div>
+</nav>
+
+<section id="about" align="center">
+  <header>
+    <div class="title"><h1 style="font-size: 2.5rem;">About Me</h1></div>
+  </header>
+
+  <div style="display: flex; justify-content: center;">
+    <div class="slider">
+      <div class="slides">
+        <img src="a.jpg" alt="Slide1">
+        <img src="uss.jpg" alt="Slide2">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nameslide">
+  <div id="nameSlider" style="text-align: left; font-size: 2rem; font-weight: bold;"></div>
+</section>
+
+<div class="description">
+  <p style="text-align: center;">I’m a <b style="color: black;"> Programmer </b>
+     and <b style="color: black;">UI/UX Designer </b>
+     who builds simple, user-friendly digital products. I enjoy making design and code work together smoothly.</p>
+</div>
+
+<section id="projects">
+  <header>
+    <div class="title"><h1 style="font-size: 2.5rem;">Projects</h1></div>
+  </header>
+
+  <div style="display: flex; justify-content: center;">
+    <div class="slider" id="projectSlider">
+      <div class="slides2">
+        <div class="project-slide">
+          <img src="pr.jpeg" alt="Health Check Vendo">
+          <p class="caption"><b>Health Check Vendo</b></p>
+          <p style="text-align: justify; padding: 7px;">A coin-operated diagnostic kiosk that provides automated blood pressure and body temperature readings.</p>
+        </div>
+        <div class="project-slide">
+          <img src="can.jpg" alt="Figma Portfolio">
+          <p class="caption"><b>Figma Portfolio</b></p>
+          <p style="text-align: justify; padding: 7px;">Showcasing my design and coding projects. Designed and laid out using Figma.</p>
+        </div>
+        <div class="project-slide">
+          <img src="figma.jpg" alt="Travel Express">
+          <p class="caption"><b>Travel Express</b></p>
+          <p style="text-align: justify; padding: 7px;">A simple flight booking platform that lets users search, compare, and book flights quickly and securely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:10px;">
+    <button onclick="prevProject()">&#10094; Prev</button>
+    <button onclick="nextProject()">Next &#10095;</button>
+  </div>
+</section>
+
+<section id="media">
+  <header>
+    <div class="title"><h1 style="font-size: 2.5rem;">Media</h1></div>
+  </header>
+
+  <div style="display: flex; justify-content: center;">
+    <div class="slider" id="videoSlider">
+      <div class="slides2">
+        <div class="project-slide">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <p class="caption"><b>Demo Video 1</b></p>
+        </div>
+        <div class="project-slide">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/ScMzIvxBSi4"
+                  title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <p class="caption"><b>Demo Video 2</b></p>
+        </div>
+        <div class="project-slide">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/9bZkp7q19f0"
+                  title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <p class="caption"><b>Demo Video 3</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:10px;">
+    <button onclick="prevVideo()">&#10094; Prev</button>
+    <button onclick="nextVideo()">Next &#10095;</button>
+  </div>
+</section>
+
+<script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // About slider (auto)
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slides img').length;
+  let index = 0;
+  function showNextSlide() {
+    index = (index + 1) % totalSlides;
+    slides.style.transform = translateX(${-index * 100}%);
+  }
+  setInterval(showNextSlide, 3000);
+
+  // Name slider (auto)
+  const nameSlider = document.getElementById('nameSlider');
+  const names = ["Mario <br> Nebres", "Programmer/ <br> Developer", "UI/UX <br> Designer"];
+  let nameIndex = 0;
+  function showNextName() {
+    nameSlider.innerHTML = names[nameIndex];
+    nameIndex = (nameIndex + 1) % names.length;
+  }
+  showNextName();
+  setInterval(showNextName, 3000);
+
+  // Projects slider (manual only)
+  const projectSlides = document.querySelector('#projectSlider .slides2');
+  const totalProjects = document.querySelectorAll('#projectSlider .project-slide').length;
+  let projectIndex = 0;
+
+  function showProject(i) {
+    projectSlides.style.transform = translateX(${-i * 100}%);
+  }
+  function nextProject() {
+    projectIndex = (projectIndex + 1) % totalProjects;
+    showProject(projectIndex);
+  }
+  function prevProject() {
+    projectIndex = (projectIndex - 1 + totalProjects) % totalProjects;
+    showProject(projectIndex);
+  }
+
+  // Media slider (manual only)
+  const videoSlides = document.querySelector('#videoSlider .slides2');
+  const totalVideos = document.querySelectorAll('#videoSlider .project-slide').length;
+  let videoIndex = 0;
+
+  function showVideo(i) {
+    videoSlides.style.transform = translateX(${-i * 100}%);
+  }
+  function nextVideo() {
+    videoIndex = (videoIndex + 1) % totalVideos;
+    showVideo(videoIndex);
+  }
+  function prevVideo() {
+    videoIndex = (videoIndex - 1 + totalVideos) % totalVideos;
+    showVideo(videoIndex);
+  }
+</script>
+
+</body>
+</html>
