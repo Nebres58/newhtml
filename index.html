@@ -1,95 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nebres Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-        font-family: fantasy;
-        color: #555;
-        background-color: #f5f5f5;
-    }
+  html { scroll-behavior: smooth; }
 
-    nav {
-        font-family: inter;
-        background-color: #333;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 1.3rem;
-    }
+  body {
+    font-family: fantasy;
+    color: #555;
+    background-color: #f5f5f5;
+  }
 
-    .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        font-family: poppins;
-    }
+  nav {
+    font-family: 'Inter', sans-serif;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.3rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
-    .nav-links { list-style: none; display: flex; }
-    .nav-links li { margin-left: 6rem; }
-    .nav-links a {
-        text-decoration: none; color: white; padding: 0.5rem;
-        transition: background 0.3s;
-    }
-    .nav-links a:hover { background-color: #575757; border-radius: 4px; }
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+  }
 
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-    .menu-toggle div { width: 25px; height: 3px; background-color: white; margin: 4px; }
+  .nav-links { list-style: none; display: flex; }
+  .nav-links li { margin-left: 2rem; }
+  .nav-links a {
+    text-decoration: none; color: white; padding: 0.5rem;
+    transition: background 0.2s ease;
+  }
+  .nav-links a:hover { background-color: #575757; border-radius: 4px; }
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; width: 100%; background-color: #333; }
-      .nav-links.active { display: flex; }
-      .menu-toggle { display: flex; }
-    }
+  .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+  .menu-toggle div { width: 25px; height: 3px; background-color: white; margin: 4px; }
 
-    header { text-align: center; padding: 30px 30px; }
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; width: 100%; background-color: #333; }
+    .nav-links.active { display: flex; }
+    .nav-links li { margin: 0; }
+    .nav-links a { padding: 1rem; border-top: 1px solid #444; }
+    .menu-toggle { display: flex; }
+  }
 
-    .slider {
-        width: 80%;
-        max-width: 800px;
-        overflow: hidden;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
+  header { text-align: center; padding: 30px 30px; }
 
-    .slides, .slides2 {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-        width: 100%;
-    }
+  .section-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+  }
 
-    .slides img { width: 100%; flex-shrink: 0; }
+  .slider {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    background: #fff;
+  }
 
-    .project-slide { min-width: 100%; text-align: center; }
+  .slides, .slides2 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+  }
 
-    .project-slide img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 10px;
-    }
+  .slides img { width: 100%; flex-shrink: 0; }
 
-    .caption { margin-top: 10px; font-size: 1rem; color: #333; }
-    .nameslide { padding: 10px; }
-    .description { text-align: justify; padding: 1.5rem; color: #555; }
-    .title { color: #555; }
+  .project-slide { min-width: 100%; text-align: center; background: #fff; }
+  .project-slide img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
 
-    button {
-        background-color: #333; color: white; border: none;
-        padding: 8px 16px; margin: 5px; cursor: pointer; border-radius: 4px;
-    }
-    button:hover { background-color: #575757; }
+  .caption { margin-top: 10px; font-size: 1rem; color: #333; }
+
+  .nameslide { padding: 10px; }
+  .description { text-align: justify; padding: 1.5rem; color: #555; }
+  .title { color: #555; }
+
+  .controls {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  button {
+    background-color: #333; color: white; border: none;
+    padding: 8px 16px; margin: 5px; cursor: pointer; border-radius: 4px;
+  }
+  button:hover { background-color: #575757; }
+
+  /* Contact */
+  #contact .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+  }
+  .contact-item i { color: #333; }
+
+  footer {
+    padding: 30px 16px;
+    text-align: center;
+    color: #777;
+  }
 </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="Primary">
   <div class="logo">Nebres.</div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
@@ -97,56 +155,56 @@
     <li><a href="#media">Media</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="menu-toggle" id="menuToggle">
+  <div class="menu-toggle" id="menuToggle" aria-label="Menu toggle" role="button" tabindex="0">
     <div></div><div></div><div></div>
   </div>
 </nav>
 
-<section id="about" align="center">
+<section id="about" class="section-wrap" aria-labelledby="about-title">
   <header>
-    <div class="title"><h1 style="font-size: 2.5rem;">About Me</h1></div>
+    <div class="title"><h1 id="about-title" style="font-size: 2.5rem;">About Me</h1></div>
   </header>
 
-  <div style="display: flex; justify-content: center;">
-    <div class="slider">
+  <div style="display: flex; justify-content: center; padding-bottom: 16px;">
+    <div class="slider" aria-label="About slider">
       <div class="slides">
-        <img src="a.jpg" alt="Slide1">
-        <img src="uss.jpg" alt="Slide2">
+        <img src="a.jpg" alt="Portrait or project image 1" />
+        <img src="uss.jpg" alt="Portrait or project image 2" />
       </div>
     </div>
   </div>
+
+  <section class="nameslide" aria-live="polite">
+    <div id="nameSlider" style="text-align: left; font-size: 2rem; font-weight: bold;"></div>
+  </section>
+
+  <div class="description">
+    <p>I’m a <b style="color: black;">Programmer</b>
+       and <b style="color: black;">UI/UX Designer</b>
+       who builds simple, user-friendly digital products. I enjoy making design and code work together smoothly.</p>
+  </div>
 </section>
 
-<section class="nameslide">
-  <div id="nameSlider" style="text-align: left; font-size: 2rem; font-weight: bold;"></div>
-</section>
-
-<div class="description">
-  <p>I’m a <b style="color: black;"> Programmer </b>
-     and <b style="color: black;">UI/UX Designer </b>
-     who builds simple, user-friendly digital products. I enjoy making design and code work together smoothly.</p>
-</div>
-
-<section id="projects">
+<section id="projects" class="section-wrap" aria-labelledby="projects-title">
   <header>
-    <div class="title"><h1 style="font-size: 2.5rem;">Projects</h1></div>
+    <div class="title"><h2 id="projects-title" style="font-size: 2rem;">Projects</h2></div>
   </header>
 
   <div style="display: flex; justify-content: center;">
-    <div class="slider" id="projectSlider">
+    <div class="slider" id="projectSlider" aria-label="Projects slider">
       <div class="slides2">
         <div class="project-slide">
-          <img src="pr.jpeg" alt="Health Check Vendo">
+          <img src="pr.jpeg" alt="Health Check Vendo" />
           <p class="caption"><b>Health Check Vendo</b></p>
           <p style="text-align: justify; padding: 7px;">A coin-operated diagnostic kiosk that provides automated blood pressure and body temperature readings.</p>
         </div>
         <div class="project-slide">
-          <img src="can.jpg" alt="Figma Portfolio">
+          <img src="can.jpg" alt="Figma Portfolio" />
           <p class="caption"><b>Figma Portfolio</b></p>
           <p style="text-align: justify; padding: 7px;">Showcasing my design and coding projects. Designed and laid out using Figma.</p>
         </div>
         <div class="project-slide">
-          <img src="figma.jpg" alt="Travel Express">
+          <img src="figma.jpg" alt="Travel Express" />
           <p class="caption"><b>Travel Express</b></p>
           <p style="text-align: justify; padding: 7px;">A simple flight booking platform that lets users search, compare, and book flights quickly and securely.</p>
         </div>
@@ -154,19 +212,19 @@
     </div>
   </div>
 
-  <div style="text-align:center; margin-top:10px;">
-    <button onclick="prevProject()">&#10094; Prev</button>
-    <button onclick="nextProject()">Next &#10095;</button>
+  <div class="controls">
+    <button onclick="prevProject()" aria-label="Previous project">&#10094; Prev</button>
+    <button onclick="nextProject()" aria-label="Next project">Next &#10095;</button>
   </div>
 </section>
 
-<section id="media">
+<section id="media" class="section-wrap" aria-labelledby="media-title">
   <header>
-    <div class="title"><h1 style="font-size: 2.5rem;">Media</h1></div>
+    <div class="title"><h2 id="media-title" style="font-size: 2rem;">Media</h2></div>
   </header>
 
   <div style="display: flex; justify-content: center;">
-    <div class="slider" id="videoSlider">
+    <div class="slider" id="videoSlider" aria-label="Media slider">
       <div class="slides2">
         <div class="project-slide">
           <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
@@ -187,18 +245,56 @@
     </div>
   </div>
 
-  <div style="text-align:center; margin-top:10px;">
-    <button onclick="prevVideo()">&#10094; Prev</button>
-    <button onclick="nextVideo()">Next &#10095;</button>
+  <div class="controls">
+    <button onclick="prevVideo()" aria-label="Previous video">&#10094; Prev</button>
+    <button onclick="nextVideo()" aria-label="Next video">Next &#10095;</button>
   </div>
 </section>
 
+<section id="contact" class="section-wrap" aria-labelledby="contact-title">
+  <header>
+    <div class="title"><h2 id="contact-title" style="font-size: 2rem;">Contact</h2></div>
+  </header>
+
+  <div class="card">
+    <p style="padding-bottom: 10px;">
+      Want to collaborate or see more work? Reach out via email or socials.
+    </p>
+
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:mario.nebres@example.com" aria-label="Email">
+        <i class="fa-solid fa-envelope"></i>
+        <span><b>Email:</b> mario.nebres@example.com</span>
+      </a>
+      <a class="contact-item" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+        <span><b>GitHub:</b> github.com/your-username</span>
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+        <span><b>LinkedIn:</b> linkedin.com/in/your-username</span>
+      </a>
+      <a class="contact-item" href="https://twitter.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <i class="fa-brands fa-x-twitter"></i>
+        <span><b>Twitter/X:</b> @your-username</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Nebres. All rights reserved.</p>
+</footer>
+
 <script>
-  // Mobile menu toggle
+  // Mobile menu toggle + keyboard support
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
+  });
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('active');
   });
 
   // About slider (auto)
@@ -207,7 +303,7 @@
   let index = 0;
   function showNextSlide() {
     index = (index + 1) % totalSlides;
-    slides.style.transform = translateX(${-index * 100}%);
+    slides.style.transform = `translateX(${-index * 100}%)`;
   }
   setInterval(showNextSlide, 3000);
 
@@ -222,13 +318,12 @@
   showNextName();
   setInterval(showNextName, 3000);
 
-  // Projects slider (manual only)
+  // Projects slider (manual)
   const projectSlides = document.querySelector('#projectSlider .slides2');
   const totalProjects = document.querySelectorAll('#projectSlider .project-slide').length;
   let projectIndex = 0;
-
   function showProject(i) {
-    projectSlides.style.transform = translateX(${-i * 100}%);
+    projectSlides.style.transform = `translateX(${-i * 100}%)`;
   }
   function nextProject() {
     projectIndex = (projectIndex + 1) % totalProjects;
@@ -238,14 +333,15 @@
     projectIndex = (projectIndex - 1 + totalProjects) % totalProjects;
     showProject(projectIndex);
   }
+  // Initialize
+  showProject(0);
 
-  // Media slider (manual only)
+  // Media slider (manual)
   const videoSlides = document.querySelector('#videoSlider .slides2');
   const totalVideos = document.querySelectorAll('#videoSlider .project-slide').length;
   let videoIndex = 0;
-
   function showVideo(i) {
-    videoSlides.style.transform = translateX(${-i * 100}%);
+    videoSlides.style.transform = `translateX(${-i * 100}%)`;
   }
   function nextVideo() {
     videoIndex = (videoIndex + 1) % totalVideos;
@@ -255,6 +351,8 @@
     videoIndex = (videoIndex - 1 + totalVideos) % totalVideos;
     showVideo(videoIndex);
   }
+  // Initialize
+  showVideo(0);
 </script>
 
 </body>
