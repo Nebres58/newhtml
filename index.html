@@ -4,53 +4,21 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Nebres Portfolio</title>
-
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  body { font-family: fantasy; color: #555; background-color: #f5f5f5; }
 
-  body {
-    font-family: fantasy;
-    color: #555;
-    background-color: #f5f5f5;
-  }
-
-  nav {
-    font-family: 'Inter', sans-serif;
-    background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.3rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-  }
-
+  nav { font-family: 'Inter', sans-serif; background-color: #333; color: white; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.3rem; position: sticky; top: 0; z-index: 1000; }
+  .logo { font-size: 1.5rem; font-weight: bold; font-family: 'Poppins', sans-serif; }
   .nav-links { list-style: none; display: flex; }
   .nav-links li { margin-left: 2rem; }
-  .nav-links a {
-    text-decoration: none; color: white; padding: 0.5rem;
-    transition: background 0.2s ease;
-  }
+  .nav-links a { text-decoration: none; color: white; padding: 0.5rem; transition: background 0.2s ease; }
   .nav-links a:hover { background-color: #575757; border-radius: 4px; }
-
   .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
   .menu-toggle div { width: 25px; height: 3px; background-color: white; margin: 4px; }
-
   @media (max-width: 768px) {
     .nav-links { display: none; flex-direction: column; width: 100%; background-color: #333; }
     .nav-links.active { display: flex; }
@@ -60,123 +28,32 @@
   }
 
   header { text-align: center; padding: 30px 30px; }
-
-  .section-wrap {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 16px 40px;
-  }
-
-  .slider {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    background: #fff;
-  }
-
-  .slides, .slides2 {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-  }
-
+  .section-wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px 40px; }
+  .slider { width: 80%; max-width: 800px; margin: 0 auto; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); background: #fff; }
+  .slides, .slides2 { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
   .slides img { width: 100%; flex-shrink: 0; }
 
   .project-slide { min-width: 100%; text-align: center; background: #fff; }
-  .project-slide img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-  }
-
+  .project-slide img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0; }
   .caption { margin-top: 10px; font-size: 1rem; color: #333; }
 
   .nameslide { padding: 10px; }
   .description { text-align: justify; padding: 1.5rem; color: #555; }
   .title { color: #555; }
-
-  .controls {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  button {
-    background-color: #333; color: white; border: none;
-    padding: 8px 16px; margin: 5px; cursor: pointer; border-radius: 4px;
-  }
+  .controls { text-align: center; margin-top: 10px; }
+  button { background-color: #333; color: white; border: none; padding: 8px 16px; margin: 5px; cursor: pointer; border-radius: 4px; }
   button:hover { background-color: #575757; }
 
-  /* Contact (redesigned) */
-  #contact .card {
-    background: linear-gradient(135deg, #fff, #f0f0f0);
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  #contact .card p { text-align: center; }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  @media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; }
-  }
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    border-radius: 10px;
-    background: #fff;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    text-decoration: none;
-    color: inherit;
-  }
-  .contact-item i {
-    background: #333;
-    color: white;
-    padding: 10px;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-  .contact-item:hover {
-    transform: translateY(-5px);
-    background: linear-gradient(135deg, #333, #444);
-    color: white;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  }
+  #contact .card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); max-width: 800px; margin: 0 auto; overflow: hidden; text-align: center; }
+  .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .contact-item { flex: 1 1 300px; max-width: 350px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; background: #fff; transition: all 0.3s ease; text-decoration: none; color: inherit; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .contact-item i { background: #333; color: white; padding: 10px; border-radius: 50%; font-size: 1.1rem; flex-shrink: 0; }
+  .contact-item:hover { transform: translateY(-4px); background: linear-gradient(135deg, #333, #444); color: white; box-shadow: 0 6px 20px rgba(0,0,0,0.25); border-color: transparent; }
   .contact-item:hover i { background: #ff9800; }
+  .cta-btn { display: inline-block; margin-top: 20px; background: #333; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s ease; }
+  .cta-btn:hover { background: #ff9800; color: #fff; }
 
-  .cta-btn {
-    display: inline-block;
-    margin-top: 20px;
-    background: #333;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
-  }
-  .cta-btn:hover {
-    background: #ff9800;
-    color: #fff;
-  }
-
-  footer {
-    padding: 30px 16px;
-    text-align: center;
-    color: #777;
-  }
+  footer { padding: 30px 16px; text-align: center; color: #777; }
 </style>
 </head>
 <body>
@@ -189,7 +66,7 @@
     <li><a href="#media">Media</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="menu-toggle" id="menuToggle" aria-label="Menu toggle" role="button" tabindex="0">
+  <div class="menu-toggle" id="menuToggle" role="button" tabindex="0">
     <div></div><div></div><div></div>
   </div>
 </nav>
@@ -261,18 +138,15 @@
     <div class="slider" id="videoSlider" aria-label="Media slider">
       <div class="slides2">
         <div class="project-slide">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/KR2zsX7bWhs?si=TVcndD-MbYvENmmS" title="Video 1" frameborder="0" allowfullscreen></iframe>
           <p class="caption"><b>Video 1</b></p>
         </div>
         <div class="project-slide">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/ScMzIvxBSi4"
-                  title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/fyl8XCXKM_o?si=XckL_VnCFBF6HZMS" title="Video 2" frameborder="0" allowfullscreen></iframe>
           <p class="caption"><b>Video 2</b></p>
         </div>
         <div class="project-slide">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/9bZkp7q19f0"
-                  title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/X5I9Z2fmgHc?si=nsjC57PAjhXn4QBX" title="Video 3" frameborder="0" allowfullscreen></iframe>
           <p class="caption"><b>Video 3</b></p>
         </div>
       </div>
@@ -291,24 +165,22 @@
   </header>
 
   <div class="card">
-    <p style="padding-bottom: 10px;">
-      Want to collaborate or see more work? Reach out via email or socials.
-    </p>
+    <p style="padding-bottom: 10px;">Want to collaborate or see more work? Reach out via email or socials.</p>
 
     <div class="contact-grid">
-      <a class="contact-item" href="nebresmario58@gmail.com" aria-label="Email">
+      <a class="contact-item" href="nerbesmario58@gmail.com" aria-label="Email">
         <i class="fa-solid fa-envelope"></i>
-        <span><b>Email:</b>nebresmario58@gmail.com</span>
+        <span><b>Email:</b> nerbesmario58@gmail.com</span>
       </a>
       <a class="contact-item" href="https://github.com/nebres58" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
         <i class="fa-brands fa-github"></i>
         <span><b>GitHub:</b> github.com/nebres58</span>
       </a>
-      <a class="contact-item" href="https://facebook.com/your-username" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <a class="contact-item" href="https://facebook.com/marionebresjr." target="_blank" rel="noopener noreferrer" aria-label="Facebook">
         <i class="fa-brands fa-facebook"></i>
         <span><b>Facebook:</b> Mario Nebres Jr.</span>
       </a>
-      <a class="contact-item" href="tel:+639123456789" aria-label="Phone">
+      <a class="contact-item" href="tel:+639812110016" aria-label="Phone">
         <i class="fa-solid fa-phone"></i>
         <span><b>Phone:</b> +63 981 211 0016</span>
       </a>
@@ -325,17 +197,11 @@
 </footer>
 
 <script>
-  // Mobile menu toggle + keyboard support
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-  menuToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('active');
-  });
+  menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+  menuToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('active'); });
 
-  // About slider (auto)
   const slides = document.querySelector('.slides');
   const totalSlides = document.querySelectorAll('.slides img').length;
   let index = 0;
@@ -345,7 +211,6 @@
   }
   setInterval(showNextSlide, 3000);
 
-  // Name slider (auto)
   const nameSlider = document.getElementById('nameSlider');
   const names = ["Mario <br> Nebres", "Programmer/ <br> Developer", "UI/UX <br> Designer"];
   let nameIndex = 0;
@@ -356,40 +221,20 @@
   showNextName();
   setInterval(showNextName, 3000);
 
-  // Projects slider (manual)
   const projectSlides = document.querySelector('#projectSlider .slides2');
   const totalProjects = document.querySelectorAll('#projectSlider .project-slide').length;
   let projectIndex = 0;
-  function showProject(i) {
-    projectSlides.style.transform = `translateX(${-i * 100}%)`;
-  }
-  function nextProject() {
-    projectIndex = (projectIndex + 1) % totalProjects;
-    showProject(projectIndex);
-  }
-  function prevProject() {
-    projectIndex = (projectIndex - 1 + totalProjects) % totalProjects;
-    showProject(projectIndex);
-  }
-  // Initialize
+  function showProject(i) { projectSlides.style.transform = `translateX(${-i * 100}%)`; }
+  function nextProject() { projectIndex = (projectIndex + 1) % totalProjects; showProject(projectIndex); }
+  function prevProject() { projectIndex = (projectIndex - 1 + totalProjects) % totalProjects; showProject(projectIndex); }
   showProject(0);
 
-  // Media slider (manual)
   const videoSlides = document.querySelector('#videoSlider .slides2');
   const totalVideos = document.querySelectorAll('#videoSlider .project-slide').length;
   let videoIndex = 0;
-  function showVideo(i) {
-    videoSlides.style.transform = `translateX(${-i * 100}%)`;
-  }
-  function nextVideo() {
-    videoIndex = (videoIndex + 1) % totalVideos;
-    showVideo(videoIndex);
-  }
-  function prevVideo() {
-    videoIndex = (videoIndex - 1 + totalVideos) % totalVideos;
-    showVideo(videoIndex);
-  }
-  // Initialize
+  function showVideo(i) { videoSlides.style.transform = `translateX(${-i * 100}%)`; }
+  function nextVideo() { videoIndex = (videoIndex + 1) % totalVideos; showVideo(videoIndex); }
+  function prevVideo() { videoIndex = (videoIndex - 1 + totalVideos) % totalVideos; showVideo(videoIndex); }
   showVideo(0);
 </script>
 
