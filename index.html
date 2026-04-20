@@ -1,242 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nebres Portfolio</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: fantasy; color: #555; background-color: #f5f5f5; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | Mario Nebres Jr.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
 
-  nav { font-family: 'Inter', sans-serif; background-color: #333; color: white; display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.3rem; position: sticky; top: 0; z-index: 1000; }
-  .logo { font-size: 1.5rem; font-weight: bold; font-family: 'Poppins', sans-serif; }
-  .nav-links { list-style: none; display: flex; }
-  .nav-links li { margin-left: 2rem; }
-  .nav-links a { text-decoration: none; color: white; padding: 0.5rem; transition: background 0.2s ease; }
-  .nav-links a:hover { background-color: #575757; border-radius: 4px; }
-  .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
-  .menu-toggle div { width: 25px; height: 3px; background-color: white; margin: 4px; }
-  @media (max-width: 768px) {
-    .nav-links { display: none; flex-direction: column; width: 100%; background-color: #333; }
-    .nav-links.active { display: flex; }
-    .nav-links li { margin: 0; }
-    .nav-links a { padding: 1rem; border-top: 1px solid #444; }
-    .menu-toggle { display: flex; }
-  }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-  header { text-align: center; padding: 30px 30px; }
-  .section-wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px 40px; }
-  .slider { width: 80%; max-width: 800px; margin: 0 auto; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); background: #fff; }
-  .slides, .slides2 { display: flex; transition: transform 0.5s ease-in-out; width: 100%; }
-  .slides img { width: 100%; flex-shrink: 0; }
+        /* --- Navigation --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 0.8rem 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(15px);
+            z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-  .project-slide { min-width: 100%; text-align: center; background: #fff; }
-  .project-slide img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px 10px 0 0; }
-  .caption { margin-top: 10px; font-size: 1rem; color: #333; }
+        .logo { font-size: 1.3rem; font-weight: 600; color: var(--primary-color); letter-spacing: 1.5px; }
 
-  .nameslide { padding: 10px; }
-  .description { text-align: justify; padding: 1.5rem; color: #555; }
-  .title { color: #555; }
-  .controls { text-align: center; margin-top: 10px; }
-  button { background-color: #333; color: white; border: none; padding: 8px 16px; margin: 5px; cursor: pointer; border-radius: 4px; }
-  button:hover { background-color: #575757; }
+        .nav-links {
+            display: flex; list-style: none; background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 1rem; border-radius: 50px; border: 1px solid rgba(255, 255, 255, 0.1); gap: 0.3rem;
+        }
 
-  #contact .card { background: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); max-width: 800px; margin: 0 auto; overflow: hidden; text-align: center; }
-  .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
-  .contact-item { flex: 1 1 300px; max-width: 350px; margin: 0 auto; display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; background: #fff; transition: all 0.3s ease; text-decoration: none; color: inherit; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-  .contact-item i { background: #333; color: white; padding: 10px; border-radius: 50%; font-size: 1.1rem; flex-shrink: 0; }
-  .contact-item:hover { transform: translateY(-4px); background: linear-gradient(135deg, #333, #444); color: white; box-shadow: 0 6px 20px rgba(0,0,0,0.25); border-color: transparent; }
-  .contact-item:hover i { background: #ff9800; }
-  .cta-btn { display: inline-block; margin-top: 20px; background: #333; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s ease; }
-  .cta-btn:hover { background: #ff9800; color: #fff; }
+        .nav-links li { position: relative; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-dim); font-size: 1.1rem;
+            padding: 0.6rem; display: flex; justify-content: center; align-items: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .nav-links a:hover { color: var(--primary-color); transform: scale(1.15); }
 
-  footer { padding: 30px 16px; text-align: center; color: #777; }
-</style>
+        .nav-links li::after {
+            content: attr(data-tooltip); position: absolute; bottom: -35px; left: 50%;
+            transform: translateX(-50%); background: var(--primary-color); color: white;
+            padding: 3px 8px; font-size: 0.7rem; border-radius: 4px; opacity: 0;
+            pointer-events: none; transition: all 0.2s ease; white-space: nowrap;
+        }
+        .nav-links li:hover::after { opacity: 1; bottom: -28px; }
+
+        /* --- Sections --- */
+        section { padding: 50px 10% 30px; min-height: auto; display: flex; flex-direction: column; justify-content: center; }
+        .hero { align-items: center; text-align: center; min-height: 85vh; padding-top: 100px; }
+        
+        .profile-img-container {
+            width: 250px; height: 250px; flex-shrink: 0; border-radius: 50%; margin-bottom: 2rem;
+            border: 5px solid var(--primary-color); padding: 5px;
+            background: linear-gradient(45deg, var(--primary-color), #c084fc);
+            box-shadow: 0 0 35px rgba(99, 102, 241, 0.3); overflow: hidden;
+        }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+        .hero h1 { font-size: clamp(2.2rem, 7vw, 3.2rem); margin-bottom: 0.8rem; background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.1rem; color: var(--text-dim); max-width: 650px; }
+
+        h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
+
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .display-card { background: var(--card-bg); padding: 12px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.1); transition: transform 0.3s ease; }
+        .display-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        
+        .zoomable-img { width: 100%; height: 200px; object-fit: contain; background: #1e293b; border-radius: 10px; margin-bottom: 1rem; cursor: zoom-in; }
+
+        .scroll-container { display: flex; overflow-x: auto; gap: 2rem; padding: 15px 0; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--primary-color) transparent;}
+        .scroll-item { flex: 0 0 300px; scroll-snap-align: center; }
+
+        .social-links { display: flex; justify-content: center; gap: 2.5rem; margin-top: 1.5rem; }
+        .social-links a { color: var(--text-main); font-size: 2.2rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary-color); transform: translateY(-5px); }
+
+        /* --- CHATBOT STYLES --- */
+        .chat-bubble {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: var(--primary-color); border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; color: white;
+            font-size: 1.5rem; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 3000; transition: transform 0.3s;
+        }
+        .chat-bubble:hover { transform: scale(1.1); }
+
+        .chat-window {
+            position: fixed; bottom: 100px; right: 30px; width: 320px; height: 400px;
+            background: #1e293b; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);
+            display: none; flex-direction: column; overflow: hidden; z-index: 3000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .chat-header { background: var(--primary-color); padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; }
+        .msg { padding: 8px 12px; border-radius: 10px; max-width: 80%; line-height: 1.4; }
+        .bot-msg { background: #334155; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user-msg { background: var(--primary-color); align-self: flex-end; border-bottom-right-radius: 2px; }
+        .chat-input-area { padding: 10px; display: flex; gap: 5px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .chat-input-area input { flex: 1; background: #0f172a; border: none; padding: 8px; border-radius: 5px; color: white; outline: none; }
+        .chat-input-area button { background: var(--primary-color); border: none; padding: 0 12px; border-radius: 5px; color: white; cursor: pointer; }
+
+        /* --- Modals --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(8px); }
+        .modal-content { position: relative; background: #1e293b; margin: 2% auto; width: 90%; max-width: 800px; height: 85vh; border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; }
+        .close-modal { position: absolute; top: 20px; right: 25px; color: #fff; font-size: 35px; cursor: pointer; z-index: 2100; }
+        .full-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        footer { text-align: center; padding: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-dim); font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .profile-img-container { width: 180px; height: 180px; }
+            .chat-window { width: 280px; right: 10px; bottom: 90px; }
+            .chat-bubble { right: 20px; bottom: 20px; }
+            nav { padding: 0.8rem 5%; }
+            .nav-links a { font-size: 1rem; padding: 0.4rem; }
+        }
+    </style>
 </head>
 <body>
 
-<nav aria-label="Primary">
-  <div class="logo">Nebres.</div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#media">Media</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="menu-toggle" id="menuToggle" role="button" tabindex="0">
-    <div></div><div></div><div></div>
-  </div>
-</nav>
+    <nav>
+        <div class="logo">PORTFOLIO</div>
+        <ul class="nav-links">
+            <li data-tooltip="Home"><a href="#home"><i class="fa-solid fa-house"></i></a></li>
+            <li data-tooltip="About"><a href="#about"><i class="fa-solid fa-user"></i></a></li>
+            <li data-tooltip="Achievements"><a href="#achievements"><i class="fa-solid fa-trophy"></i></a></li>
+            <li data-tooltip="Projects"><a href="#projects"><i class="fa-solid fa-briefcase"></i></a></li>
+            <li data-tooltip="Resume"><a href="#resume"><i class="fa-solid fa-file-pdf"></i></a></li>
+            <li data-tooltip="Contact"><a href="#contact"><i class="fa-solid fa-envelope"></i></a></li>
+        </ul>
+    </nav>
 
-<section id="about" class="section-wrap" aria-labelledby="about-title">
-  <header>
-    <div class="title"><h1 id="about-title" style="font-size: 2.5rem;">About Me</h1></div>
-  </header>
+    <section id="home" class="hero">
+        <div class="profile-img-container"><img src="a.jpg" alt="Profile Image"></div>
+        <h1>Mario Nebres Jr.</h1>
+        <p>Programmer | Specializing in Java, Raspberry Pi, and Hardware Integration.</p>
+    </section>
 
-  <div style="display: flex; justify-content: center; padding-bottom: 16px;">
-    <div class="slider" aria-label="About slider">
-      <div class="slides">
-        <img src="a.jpg" alt="Portrait or project image 1" />
-        <img src="uss.jpg" alt="Portrait or project image 2" />
-      </div>
-    </div>
-  </div>
-
-  <section class="nameslide" aria-live="polite">
-    <div id="nameSlider" style="text-align: left; font-size: 2rem; font-weight: bold;"></div>
-  </section>
-
-  <div class="description">
-    <p>I’m a <b style="color: black;">Programmer</b>
-       and <b style="color: black;">UI/UX Designer</b>
-       who builds simple, user-friendly digital products. I enjoy making design and code work together smoothly.</p>
-  </div>
-</section>
-
-<section id="projects" class="section-wrap" aria-labelledby="projects-title">
-  <header>
-    <div class="title"><h2 id="projects-title" style="font-size: 2rem;">Projects</h2></div>
-  </header>
-
-  <div style="display: flex; justify-content: center;">
-    <div class="slider" id="projectSlider" aria-label="Projects slider">
-      <div class="slides2">
-        <div class="project-slide">
-          <img src="pr.jpeg" alt="Health Check Vendo" />
-          <p class="caption"><b>Health Check Vendo</b></p>
-          <p style="text-align: justify; padding: 7px;">A coin-operated diagnostic kiosk that provides automated blood pressure and body temperature readings.</p>
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="display-card" style="padding: 2.5rem; max-width: 800px; margin: 0 auto;">
+            <p style="text-align: center;">I am a passionate creator dedicated to solving complex problems through technology. I focus on bridging hardware and software to build systems that are both functional and visually stunning.</p>
         </div>
-        <div class="project-slide">
-          <img src="can.jpg" alt="Figma Portfolio" />
-          <p class="caption"><b>Figma Portfolio</b></p>
-          <p style="text-align: justify; padding: 7px;">Showcasing my design and coding projects. Designed and laid out using Figma.</p>
+    </section>
+
+    <section id="achievements">
+        <h2>Achievements</h2>
+        <div class="image-grid">
+            <div class="display-card">
+                <img src="cer1.jpg" alt="Cert 1" class="zoomable-img" onclick="openImageViewer(this.src)">
+                <h3 style="color: var(--primary-color); font-size: 1rem;">Innovative Systematic Solution</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Foundation for Innovative Systematic Solution Seminar.</p>
+            </div>
+            <div class="display-card">
+                <img src="cer2.jpg" alt="Cert 2" class="zoomable-img" onclick="openImageViewer(this.src)">
+                <h3 style="color: var(--primary-color); font-size: 1rem;">CISCO Networking</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Networking Fundamentals Certificate.</p>
+            </div>
+            <div class="display-card">
+                <img src="cer3.jpeg" alt="Cert 3" class="zoomable-img" onclick="openImageViewer(this.src)">
+                <h3 style="color: var(--primary-color); font-size: 1rem;">Digital Security</h3>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Course completion from CISCO Networking Academy.</p>
+            </div>
         </div>
-        <div class="project-slide">
-          <img src="figma.jpg" alt="Travel Express" />
-          <p class="caption"><b>Travel Express</b></p>
-          <p style="text-align: justify; padding: 7px;">A simple flight booking platform that lets users search, compare, and book flights quickly and securely.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Latest Projects</h2>
+        <div class="scroll-container">
+            <div class="scroll-item">
+                <div class="display-card">
+                    <img src="pr.jpeg" alt="Check-U-Heart" class="zoomable-img" onclick="openImageViewer(this.src)">
+                    <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 0.5rem;">Check-U-Heart Vendo</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">Java-based blood pressure vending machine system.</p>
+                </div>
+            </div>
+            <div class="scroll-item">
+                <div class="display-card">
+                    <img src="figma.jpg" alt="Travel Express" class="zoomable-img" onclick="openImageViewer(this.src)">
+                    <h3 style="color: var(--primary-color); font-size: 1.1rem; margin-bottom: 0.5rem;">Travel Express</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem;">A travel booking application built in Figma.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div class="controls">
-    <button onclick="prevProject()" aria-label="Previous project">&#10094; Prev</button>
-    <button onclick="nextProject()" aria-label="Next project">Next &#10095;</button>
-  </div>
-</section>
-
-<section id="media" class="section-wrap" aria-labelledby="media-title">
-  <header>
-    <div class="title"><h2 id="media-title" style="font-size: 2rem;">Media</h2></div>
-  </header>
-
-  <div style="display: flex; justify-content: center;">
-    <div class="slider" id="videoSlider" aria-label="Media slider">
-      <div class="slides2">
-        <div class="project-slide">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/KR2zsX7bWhs?si=TVcndD-MbYvENmmS" title="Video 1" frameborder="0" allowfullscreen></iframe>
-          <p class="caption"><b>Video 1</b></p>
+    <section id="resume">
+        <h2>Resume</h2>
+        <div class="display-card" style="text-align: center; cursor: pointer; max-width: 600px; margin: 0 auto; padding: 2.5rem;" onclick="openResume()">
+            <i class="fa-solid fa-file-pdf" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+            <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Click to preview professional background.</p>
+            <span style="color: var(--primary-color); font-weight: 600; font-size: 0.8rem; border: 1px solid var(--primary-color); padding: 5px 15px; border-radius: 20px;">VIEW PREVIEW</span>
         </div>
-        <div class="project-slide">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/fyl8XCXKM_o?si=XckL_VnCFBF6HZMS" title="Video 2" frameborder="0" allowfullscreen></iframe>
-          <p class="caption"><b>Video 2</b></p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="display-card contact-card" style="max-width: 800px; margin: 0 auto; padding: 2rem; text-align: center;">
+            <p style="color: var(--text-dim);">Feel free to reach out for collaborations or just to say hi!</p>
+            <div class="social-links">
+                <a href="mailto:your.email@example.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://facebook.com/yourprofile" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="tel:+639000000000" title="Phone"><i class="fa-solid fa-phone"></i></a>
+            </div>
         </div>
-        <div class="project-slide">
-          <iframe width="100%" height="315" src="https://www.youtube.com/embed/X5I9Z2fmgHc?si=nsjC57PAjhXn4QBX" title="Video 3" frameborder="0" allowfullscreen></iframe>
-          <p class="caption"><b>Video 3</b></p>
+    </section>
+
+    <div class="chat-bubble" onclick="toggleChat()"><i class="fa-solid fa-comment-dots"></i></div>
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <span>Mario's Assistant</span>
+            <i class="fa-solid fa-xmark" onclick="toggleChat()" style="cursor:pointer"></i>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="controls">
-    <button onclick="prevVideo()" aria-label="Previous video">&#10094; Prev</button>
-    <button onclick="nextVideo()" aria-label="Next video">Next &#10095;</button>
-  </div>
-</section>
-
-<section id="contact" class="section-wrap" aria-labelledby="contact-title">
-  <header>
-    <div class="title"><h2 id="contact-title" style="font-size: 2rem;">Contact</h2></div>
-  </header>
-
-  <div class="card">
-    <p style="padding-bottom: 10px;">Want to collaborate or see more work? Reach out via email or socials.</p>
-
-    <div class="contact-grid">
-      <a class="contact-item" href="nerbesmario58@gmail.com" aria-label="Email">
-        <i class="fa-solid fa-envelope"></i>
-        <span><b>Email:</b> nerbesmario58@gmail.com</span>
-      </a>
-      <a class="contact-item" href="https://github.com/nebres58" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <i class="fa-brands fa-github"></i>
-        <span><b>GitHub:</b> github.com/nebres58</span>
-      </a>
-      <a class="contact-item" href="https://facebook.com/marionebresjr." target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <i class="fa-brands fa-facebook"></i>
-        <span><b>Facebook:</b> Mario Nebres Jr.</span>
-      </a>
-      <a class="contact-item" href="tel:+639812110016" aria-label="Phone">
-        <i class="fa-solid fa-phone"></i>
-        <span><b>Phone:</b> +63 981 211 0016</span>
-      </a>
+        <div class="chat-messages" id="chatMessages">
+            <div class="msg bot-msg">Hi! Ask me about Mario's name or his school.</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type here..." onkeypress="handleKey(event)">
+            <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
     </div>
 
-    <div style="text-align:center; margin-top:20px;">
-      <a href="mailto:mario.nebres@example.com" class="cta-btn">Work With Me</a>
+    <div id="universalModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="preview-area" style="flex:1; display:flex; align-items:center; justify-content:center;">
+                <img id="modalImg" src="" alt="Preview" class="full-img">
+            </div>
+            <div class="modal-footer" id="modalFooter" style="display: none; padding: 20px; text-align: center;">
+                <a href="resume.pdf" download style="color: white; background: var(--primary-color); padding: 10px 20px; border-radius: 10px; text-decoration: none;">Download PDF</a>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <p>&copy; 2025 Nebres. All rights reserved.</p>
-</footer>
+    <footer><p>&copy; 2026 Mario Nebres Jr. Portfolio. All Rights Reserved.</p></footer>
 
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-  menuToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('active'); });
+    <script>
+        // CHATBOT LOGIC
+        function toggleChat() {
+            const chat = document.getElementById('chatWindow');
+            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+        }
 
-  const slides = document.querySelector('.slides');
-  const totalSlides = document.querySelectorAll('.slides img').length;
-  let index = 0;
-  function showNextSlide() {
-    index = (index + 1) % totalSlides;
-    slides.style.transform = `translateX(${-index * 100}%)`;
-  }
-  setInterval(showNextSlide, 3000);
+        function handleKey(e) { if (e.key === 'Enter') sendMessage(); }
 
-  const nameSlider = document.getElementById('nameSlider');
-  const names = ["Mario <br> Nebres", "Programmer/ <br> Developer", "UI/UX <br> Designer"];
-  let nameIndex = 0;
-  function showNextName() {
-    nameSlider.innerHTML = names[nameIndex];
-    nameIndex = (nameIndex + 1) % names.length;
-  }
-  showNextName();
-  setInterval(showNextName, 3000);
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const container = document.getElementById('chatMessages');
+            const text = input.value.trim().toLowerCase();
+            if (!text) return;
 
-  const projectSlides = document.querySelector('#projectSlider .slides2');
-  const totalProjects = document.querySelectorAll('#projectSlider .project-slide').length;
-  let projectIndex = 0;
-  function showProject(i) { projectSlides.style.transform = `translateX(${-i * 100}%)`; }
-  function nextProject() { projectIndex = (projectIndex + 1) % totalProjects; showProject(projectIndex); }
-  function prevProject() { projectIndex = (projectIndex - 1 + totalProjects) % totalProjects; showProject(projectIndex); }
-  showProject(0);
+            const userDiv = document.createElement('div');
+            userDiv.className = 'msg user-msg';
+            userDiv.textContent = input.value;
+            container.appendChild(userDiv);
+            input.value = "";
 
-  const videoSlides = document.querySelector('#videoSlider .slides2');
-  const totalVideos = document.querySelectorAll('#videoSlider .project-slide').length;
-  let videoIndex = 0;
-  function showVideo(i) { videoSlides.style.transform = `translateX(${-i * 100}%)`; }
-  function nextVideo() { videoIndex = (videoIndex + 1) % totalVideos; showVideo(videoIndex); }
-  function prevVideo() { videoIndex = (videoIndex - 1 + totalVideos) % totalVideos; showVideo(videoIndex); }
-  showVideo(0);
-</script>
+            const botDiv = document.createElement('div');
+            botDiv.className = 'msg bot-msg';
+            
+            if (text.includes("name")) {
+                botDiv.textContent = "I am Mario Nebres.";
+            } else if (text.includes("school") || text.includes("university")) {
+                botDiv.textContent = "(CPSU) Central Philippine State University";
+            } else {
+                botDiv.textContent = "I'm not sure about that. Try asking for my name or school!";
+            }
 
+            setTimeout(() => {
+                container.appendChild(botDiv);
+                container.scrollTop = container.scrollHeight;
+            }, 400);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // MODAL LOGIC
+        const modal = document.getElementById("universalModal");
+        const modalImg = document.getElementById("modalImg");
+        const modalFooter = document.getElementById("modalFooter");
+
+        function openImageViewer(src) {
+            modal.style.display = "block";
+            modalImg.src = src;
+            modalFooter.style.display = "none";
+            document.body.style.overflow = "hidden";
+        }
+
+        function openResume() {
+            modal.style.display = "block";
+            modalImg.src = "resume-preview.jpg";
+            modalFooter.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+        window.onclick = (e) => { if (e.target == modal) closeModal(); }
+    </script>
 </body>
 </html>
